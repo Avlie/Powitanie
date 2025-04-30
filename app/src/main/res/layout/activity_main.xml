@@ -9,6 +9,7 @@
     android:orientation="vertical"
     android:gravity="center"
     android:background="#F0F0F0"
+    android:layout_margin="20px"
     >
 
     <TextView
@@ -24,40 +25,33 @@
 
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/powit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginBottom="20px"
-        android:textAlignment="center"
-        android:textSize="20px"
+        android:textSize="40px"
         android:text="Wpisz swoje imię poniżej:" />
 
     <EditText
-        android:id="@+id/editTextText"
+        android:id="@+id/editTextImie"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:ems="10"
         android:inputType="text"
-        android:text="" />
+        android:text=""
+        android:hint="Twoje imię"/>
 
 
 
     <Button
-        android:id="@+id/usun"
-        android:layout_width="match_parent"
+        android:id="@+id/buttonPowitanie"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:backgroundTint="#009688"
-        android:text="Usuń dane" />
-
-    <Button
-        android:id="@+id/resetuj"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:backgroundTint="#009688"
-        android:text="Resetuj" />
+        android:text="Przywitaj mnie!" />
 
 
 </LinearLayout>
