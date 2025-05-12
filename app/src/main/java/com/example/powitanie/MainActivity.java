@@ -26,12 +26,14 @@ import android.content.DialogInterface;
 public class MainActivity extends AppCompatActivity {
     private EditText imie;
     private static final String CHANNEL_ID = "my_channel_id";
+    private static final int NOTIFICATION_ID = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
+        createNotificationChannel();
         imie = findViewById(R.id.editTextImie);
         Button wysli = findViewById(R.id.buttonPowitanie);
         wysli.setOnClickListener(new View.OnClickListener() {
@@ -74,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
     private void createNotificationChannel() {
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             CharSequence name = "Kanał powiadomień";
             String description = "Opis kanału powiadomień";
             int importance = NotificationManager.IMPORTANCE_DEFAULT;
@@ -82,17 +84,18 @@ public class MainActivity extends AppCompatActivity {
             channel.setDescription(description);
             NotificationManager notificationManager = getSystemService(NotificationManager.class);
             notificationManager.createNotificationChannel(channel);
-
         }
     }
-    public void sendpowitanie(){
+
+    public void sendpowitanie() {
         String podajImie = imie.getText().toString().trim();
         NotificationCompat.Builder builder = new NotificationCompat.Builder(MainActivity.this, CHANNEL_ID)
                 .setSmallIcon(R.mipmap.ic_launcher)
                 .setContentTitle("Witaj!")
                 .setContentText("Miło Cię widzieć, " + podajImie + "!")
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT);
-        //NotificationManager notificationManager = NotificationManagerCompat.from(MainActivity.this);
-        //notificationManager.notify(1, builder.build());
+
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
+        notificationManager.notify(NOTIFICATION_ID, builder.build());
     }
 }
