@@ -90,12 +90,16 @@ public class MainActivity extends AppCompatActivity {
             }
 
             String podajImie = imie.getText().toString().trim();
+
+
+
             NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID)
                     .setSmallIcon(R.mipmap.ic_launcher)
                     .setContentTitle("Witaj!")
                     .setContentText("Miło Cię widzieć, " + podajImie + "!")
                     .setPriority(NotificationCompat.PRIORITY_DEFAULT);
 
+            Toast.makeText(this, "Powiadomienie zostało wysłane!", Toast.LENGTH_SHORT).show();
             NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
             notificationManager.notify(1, builder.build());
         }
